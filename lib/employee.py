@@ -13,6 +13,13 @@ class Employee:
         self.job_title = job_title
         self.department_id = department_id
 
+    def __init__(self, name, reviews=None):
+        self.name = name
+        self.reviews = reviews if reviews else []
+
+    def reviews(self):
+        return self.reviews
+    
     def __repr__(self):
         return (
             f"<Employee {self.id}: {self.name}, {self.job_title}, " +

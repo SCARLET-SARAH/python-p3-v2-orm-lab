@@ -1,23 +1,34 @@
 # lib/department.py
 from __init__ import CURSOR, CONN
 
-
 class Department:
-
     # Dictionary of objects saved to the database.
     all = {}
 
-    def __init__(self, name, location, id=None):
+    def __init__(self, name, location=None, id=None):
         self.id = id
-        self.name = name
+        self._name = name
         self.location = location
+        self.employees_list = []
 
+    def employees(self):
+        return self.employee_list
+    
     def __repr__(self):
         return f"<Department {self.id}: {self.name}, {self.location}>"
 
     @property
     def name(self):
         return self._name
+
+    def save(self):
+        # Save the department to the database
+        # Assign an ID to the department
+        self.id = 1  # Replace with actual ID
+        self.all[self.id] = self
+
+    def employees(self):
+        return self.employees
 
     @name.setter
     def name(self, name):
